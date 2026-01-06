@@ -1,3 +1,5 @@
+from schema.output.request_response import RequestResponseSchema
+from schema.output.resource_response import ResourceResponseSchema
 from services.mapping.data_mapper import DataMapper
 from utils.faker_data import FakerData
 from utils.policy_compliace.pcc_s3 import S3PolicyAndComplianceChecker
@@ -53,19 +55,20 @@ class MapS3(DataMapper):
             policy_result = pcc_s3.determine_policy()
 
             # Build normalized object
-            normalized.append({
+            mapped_data = {
                 "id": name,
                 "name": name,
                 "type": "S3",
-                "status": "available",
-                "risk_level": policy_result.get("risk_level"),  # to be computed by policy
-                "compliance_status": policy_result.get("compliance_status"),  # to be computed by policy
+                "status": "ACTIVE",
+                "risk_level": policy_result.get("risk_level"),
+                "compliance_status": policy_result.get("compliance_status"),
                 "metadata": {
                     "encryption": encryption,
                     "versioning": versioning,
                     "logging": logging,
                     "public": public
                 }
-            })
+            }
+            normalized.append(ResourceResponseSchema(**mapped_data))
 
         return normalized

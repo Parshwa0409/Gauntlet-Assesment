@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ded374-95a8-4f78-9890-29cade66f737" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/schema/input/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/schema/output/resource_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/map_ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapping/map_ec2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/map_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapping/map_s3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pcc_ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/pcc_ec2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pcc_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/pcc_s3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/policy_compliance_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/policy_compliance_checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mapping/map_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapping/map_s3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +29,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="37s6zUCcsKFn29gzfic5Z528JZi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,8 +43,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "FastAPI.FastAPIProject.executor": "Run",
+    "FastAPI.FastAPIProject.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -104,26 +106,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1767679693455</updated>
-      <workItem from="1767679694463" duration="9699000" />
+      <workItem from="1767679694463" duration="10616000" />
+      <workItem from="1767691095216" duration="8000" />
+      <workItem from="1767692509848" duration="1144000" />
+      <workItem from="1767695351822" duration="2089000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/services/mapping/map_ec2.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1767689627838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1767697158867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
