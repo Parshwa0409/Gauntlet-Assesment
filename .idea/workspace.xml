@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ded374-95a8-4f78-9890-29cade66f737" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/policy_compliance_checker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/map_ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/map_ec2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/map_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/map_s3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/compliance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/policy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/schema/input/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/schema/output/resource_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/map_ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapping/map_ec2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/map_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mapping/map_s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/pcc_ec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/pcc_ec2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/pcc_s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/pcc_s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/policy_compliance_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/policy_compliace/policy_compliance_checker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +64,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/schema/output" />
+      <recent name="$PROJECT_DIR$/schema/input" />
+      <recent name="$PROJECT_DIR$/services/mapping" />
+      <recent name="$PROJECT_DIR$/utils/policy_compliace" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -98,15 +104,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1767679693455</updated>
-      <workItem from="1767679694463" duration="8300000" />
+      <workItem from="1767679694463" duration="9699000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/services/mapping/map_ec2.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1767687962620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1767689627838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

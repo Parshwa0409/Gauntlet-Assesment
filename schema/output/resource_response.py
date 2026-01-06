@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from typing import Literal, Dict, Any
 
-class ResponseSchema(BaseModel):
+
+class ResourceResponseSchema(BaseModel):
     id: str
     name: str
     type: Literal["EC2", "S3"]

@@ -1,13 +1,18 @@
+from services.mapping.data_mapper import DataMapper
 from utils.faker_data import FakerData
-from schema.response import ResponseSchema
-from utils.pcc_ec2 import EC2PolicyAndComplianceChecker
+from schema.output.resource_response import ResourceResponseSchema
+from utils.policy_compliace.pcc_ec2 import EC2PolicyAndComplianceChecker
 
-class MapEC2:
-    def __init__(self):
-        pass
 
-    @staticmethod
-    def map_response():
+class MapEC2(DataMapper):
+    def __init__(self, resource_data: dict = None):
+        self.resource_data = resource_data
+        super().__init__(self.resource_data)
+
+    def map_resource_data(self):
+        """
+        Maps EC2 instance data to a normalized format for policy evaluation.
+        """
         ec2_reservations = FakerData.generate_ec2_data().get("Reservations", [])
         ec2_instances = [instance for reservation in ec2_reservations for instance in reservation.get("Instances", [])]
         mapped_responses = []
@@ -43,6 +48,6 @@ class MapEC2:
 
             mapped_instance["metadata"] = ec2_metadata
 
-            mapped_responses.append(ResponseSchema(**mapped_instance))
+            mapped_responses.append(ResourceResponseSchema(**mapped_instance))
 
         return mapped_responses

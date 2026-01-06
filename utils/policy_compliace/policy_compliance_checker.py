@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class PolicyAndComplianceChecker(ABC):
     def __init__(self, resource: str):
         """

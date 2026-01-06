@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class RequestSchema(BaseModel):
     access_key_id: str
     secret_access_key: str

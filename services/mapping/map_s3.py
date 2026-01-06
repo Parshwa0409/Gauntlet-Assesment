@@ -1,13 +1,14 @@
+from services.mapping.data_mapper import DataMapper
 from utils.faker_data import FakerData
-from utils.pcc_s3 import S3PolicyAndComplianceChecker
+from utils.policy_compliace.pcc_s3 import S3PolicyAndComplianceChecker
 
 
-class MapS3:
-    def __init__(self):
-        pass
+class MapS3(DataMapper):
+    def __init__(self, resource_data: dict = None):
+        self.resource_data = resource_data
+        super().__init__(self.resource_data)
 
-    @staticmethod
-    def map_response():
+    def map_resource_data(self):
         """
         Returns a list of normalized S3 bucket objects ready for policy evaluation
         """
