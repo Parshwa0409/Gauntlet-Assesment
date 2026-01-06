@@ -1,4 +1,4 @@
-from utils.policy_compliace.policy_compliance_checker import PolicyAndComplianceChecker
+from utils.policy_compliance.policy_checker import PolicyAndComplianceChecker
 
 
 # 2️⃣ EC2 Implementation

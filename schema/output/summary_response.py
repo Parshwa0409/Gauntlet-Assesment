@@ -2,6 +2,8 @@ from pydantic import BaseModel
 
 
 class SummaryResponseSchema(BaseModel):
+    total_assets_scanned: int
+    total_high_risk_assets: int
     total_buckets: int
     high_risk_buckets: int
     low_risk_buckets: int

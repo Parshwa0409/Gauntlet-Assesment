@@ -7,6 +7,8 @@ from schema.output.summary_response import SummaryResponseSchema
 class HelperFunctions:
     @staticmethod
     def extract_metrics(resources: List[RequestResponseSchema]) -> SummaryResponseSchema:
+        total_assets_scanned = len(resources)
+        total_high_risk_assets = 0
         total_buckets = 0
         high_risk_buckets = 0
         low_risk_buckets = 0
@@ -17,6 +19,10 @@ class HelperFunctions:
         stopped_instances = 0
 
         for resource in resources:
+            # High-risk assets
+            if resource.risk_level == "HIGH":
+                total_high_risk_assets += 1
+            
             # Compliance counts (all resources)
             if resource.compliance_status == "PASS":
                 pass_compliance += 1
@@ -41,6 +47,8 @@ class HelperFunctions:
                     stopped_instances += 1
 
         mapped_metrics = {
+            "total_assets_scanned": total_assets_scanned,
+            "total_high_risk_assets": total_high_risk_assets,
             "total_buckets": total_buckets,
             "high_risk_buckets": high_risk_buckets,
             "low_risk_buckets": low_risk_buckets,
