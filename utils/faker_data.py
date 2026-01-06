@@ -5,51 +5,93 @@ class FakerData:
     @staticmethod
     def generate_ec2_data():
         return {
-                  "Reservations": [
-                    {
-                      "ReservationId": "r-0a1b2c3d4e5f67890",
-                      "OwnerId": "123456789012",
-                      "Groups": [],
-                      "Instances": [
+            "Reservations": [
+                {
+                    "ReservationId": "r-0a1b2c3d4e5f67890",
+                    "OwnerId": "1234567890",
+                    "Groups": [],
+                    "Instances": [
                         {
-                          "InstanceId": "i-0123456789abcdef0",
-                          "InstanceType": "t3.micro",
-                          "ImageId": "ami-0abcdef12345",
-                          "State": {
-                            "Code": 16,
-                            "Name": "running"
-                          },
-                          "PrivateDnsName": "ip-172-31-10-12.ec2.internal",
-                          "PublicDnsName": "ec2-54-210-12-34.compute-1.amazonaws.com",
-                          "KeyName": "my-keypair",
-                          "LaunchTime": "2025-01-01T12:00:00Z",
-                          "Placement": {
-                            "AvailabilityZone": "us-east-1a",
-                            "Tenancy": "default"
-                          },
-                          "PrivateIpAddress": "172.31.10.12",
-                          "PublicIpAddress": "54.210.12.34",
-                          "SecurityGroups": [
-                            {
-                              "GroupName": "default",
-                              "GroupId": "sg-0123abcd"
-                            }
-                          ],
-                          "Tags": [
-                            {
-                              "Key": "Name",
-                              "Value": "MyEC2Instance"
+                            "InstanceId": "i-0123456789abcdef0",
+                            "InstanceType": "t3.micro",
+                            "ImageId": "ami-0abcdef12345",
+                            "State": {
+                                "Code": 16,
+                                "Name": "running"
                             },
-                            {
-                              "Key": "Environment",
-                              "Value": "Dev"
-                            }
-                          ]
+                            "PrivateDnsName": "ip-172-31-10-12.ec2.internal2",
+                            "PublicDnsName": "ec2-54-210-12-34.compute-2.amazonaws.com",
+                            "KeyName": "my-keypair",
+                            "LaunchTime": "2025-01-01T12:00:00Z",
+                            "Placement": {
+                                "AvailabilityZone": "us-east-1a",
+                                "Tenancy": "default"
+                            },
+                            "PrivateIpAddress": "172.31.10.12",
+                            "PublicIpAddress": "54.210.12.34",
+                            "SecurityGroups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-0123abcd"
+                                }
+                            ],
+                            "Tags": [
+                                {
+                                    "Key": "Name",
+                                    "Value": "MyEC2Instance-2"
+                                },
+                                {
+                                    "Key": "Environment",
+                                    "Value": "Stage"
+                                }
+                            ]
                         }
-                      ]
-                    }
-                  ]
+                    ]
+                },
+                {
+                    "ReservationId": "r-0a1b2c3d4e5f67890",
+                    "OwnerId": "123456789012",
+                    "Groups": [],
+                    "Instances": [
+                        {
+                            "InstanceId": "i-0123456789abcdef0",
+                            "InstanceType": "t3.micro",
+                            "ImageId": "ami-0abcdef12345",
+                            "State": {
+                                "Code": 16,
+                                "Name": "running"
+                            },
+                            "PrivateDnsName": "ip-172-31-10-12.ec2.internal",
+                            "PublicDnsName": "ec2-54-210-12-34.compute-1.amazonaws.com",
+                            "KeyName": "my-keypair",
+                            "LaunchTime": "2025-01-01T12:00:00Z",
+                            "Placement": {
+                                "AvailabilityZone": "us-east-1a",
+                                "Tenancy": "default"
+                            },
+                            "PrivateIpAddress": "172.31.10.12",
+                            "PublicIpAddress": "54.210.12.34",
+                            "SecurityGroups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-0123abcd"
+                                }
+                            ],
+                            "Tags": [
+                                {
+                                    "Key": "Name",
+                                    "Value": "MyEC2Instance"
+                                },
+                                {
+                                    "Key": "Environment",
+                                    "Value": "Dev"
+                                }
+                            ]
+                        }
+                    ]
                 }
+            ]
+        }
 
     @staticmethod
     def list_buckets():

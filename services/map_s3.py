@@ -1,4 +1,6 @@
 from utils.faker_data import FakerData
+from utils.pcc_s3 import S3PolicyAndComplianceChecker
+
 
 class MapS3:
     def __init__(self):
@@ -32,12 +34,22 @@ class MapS3:
 
             # Public
             public_resp = FakerData.get_bucket_public_access_block(name)
-            public = not all(public_resp.get(k, False) for k in [
-                "BlockPublicAcls",
-                "IgnorePublicAcls",
-                "BlockPublicPolicy",
-                "RestrictPublicBuckets"
-            ])
+            public = not all(
+                public_resp.get(k, False) for k in [
+                    "BlockPublicAcls",
+                    "IgnorePublicAcls",
+                    "BlockPublicPolicy",
+                    "RestrictPublicBuckets"
+                ]
+            )
+
+            pcc_s3 = S3PolicyAndComplianceChecker(
+                is_public=public,
+                is_encrypted=encryption,
+                is_versioning_enabled=versioning,
+                is_logging_enabled=logging
+            )
+            policy_result = pcc_s3.determine_policy()
 
             # Build normalized object
             normalized.append({
@@ -45,8 +57,8 @@ class MapS3:
                 "name": name,
                 "type": "S3",
                 "status": "available",
-                "risk_level": None,  # to be computed by policy
-                "compliance_status": None,  # to be computed by policy
+                "risk_level": policy_result.get("risk_level"),  # to be computed by policy
+                "compliance_status": policy_result.get("compliance_status"),  # to be computed by policy
                 "metadata": {
                     "encryption": encryption,
                     "versioning": versioning,

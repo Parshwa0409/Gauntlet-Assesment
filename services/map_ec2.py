@@ -1,5 +1,6 @@
 from utils.faker_data import FakerData
 from schema.response import ResponseSchema
+from utils.pcc_ec2 import EC2PolicyAndComplianceChecker
 
 class MapEC2:
     def __init__(self):
@@ -7,7 +8,8 @@ class MapEC2:
 
     @staticmethod
     def map_response():
-        ec2_instances = FakerData.generate_ec2_data().get("Reservations", [])[0].get("Instances", [])
+        ec2_reservations = FakerData.generate_ec2_data().get("Reservations", [])
+        ec2_instances = [instance for reservation in ec2_reservations for instance in reservation.get("Instances", [])]
         mapped_responses = []
 
         for instance in ec2_instances:
@@ -27,15 +29,12 @@ class MapEC2:
             is_running = instance.get("State", {}).get("Name") == "running"
             has_public_ip = instance.get("PublicIpAddress") is not None
 
-            if is_running and has_public_ip:
-                mapped_instance["risk_level"] = "HIGH"
-                mapped_instance["compliance_status"] = "FAIL"
-            else:
-                mapped_instance["risk_level"] = "LOW"
-                mapped_instance["compliance_status"] = "PASS"
+            pcc_ec2 = EC2PolicyAndComplianceChecker(is_running, has_public_ip)
+            mapped_instance["risk_level"] = pcc_ec2.determine_policy().get("risk_level")
+            mapped_instance["compliance_status"] = pcc_ec2.determine_policy().get("compliance_status")
 
             ec2_metadata = {
-                "public": bool(has_public_ip),
+                "public": has_public_ip,
                 "private_ip": instance.get("PrivateIpAddress", "10.0.1.5")
             }
 
