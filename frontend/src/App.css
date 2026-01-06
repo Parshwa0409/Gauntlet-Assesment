@@ -84,52 +84,64 @@ button:active {
   color: #c62828;
 }
 
-/* Footer styles */
-.footer {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 30px 20px;
-  margin-top: auto;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+/* Summary bar styles */
+.summary-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+.summary-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.footer-content p {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+.summary-title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-.footer-stats {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  align-items: center;
+.summary-stats {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.footer-stats span {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.95);
-  white-space: nowrap;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  transition: all 0.3s ease;
+.summary-stats span {
+    font-size: 14px;
+    white-space: nowrap;
 }
 
-.footer-stats span:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+.summary-stats strong {
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+/* Initial View Placeholder */
+.initial-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    border: 2px dashed #c3cfe2;
+    border-radius: 12px;
+    background-color: #f5f7fa;
 }
 
 .footer-stats strong {

@@ -3,21 +3,23 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Footer from '../components/Footer';
+import Summary from '../components/Summary';
 import CredentialsModal from '../components/CredentialsModal';
-import CheckStatusButton from '../components/CheckStatusButton';
 import ViewToggle from '../components/ViewToggle';
-import ErrorAlert from '../components/ErrorAlert';
+import ErrorView from '../components/ErrorView';
 import CardView from '../components/CardView';
 import TableView from '../components/TableView';
+import { FormControlLabel, Switch } from '@mui/material';
+import InitialView from '../components/InitialView';
 
 export default function HomePage() {
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [openModal, setOpenModal] = useState(false);
-    const [footerStats, setFooterStats] = useState(null);
+    const [summaryStats, setSummaryStats] = useState(null);
     const [viewMode, setViewMode] = useState('card');
+    const [showOnlyHighRisk, setShowOnlyHighRisk] = useState(false);
     const [credentials, setCredentials] = useState({
         access_key_id: '',
         secret_access_key: '',
@@ -68,7 +70,7 @@ export default function HomePage() {
             
             // Extract summary stats from API response
             if (data.summary) {
-                setFooterStats(data.summary);
+                setSummaryStats(data.summary);
             }
             resetForm();
         } catch (err) {
@@ -88,17 +90,43 @@ export default function HomePage() {
         });
     };
 
+    const filteredData = response ? (showOnlyHighRisk ? response.data.filter(item => item.risk_level === 'HIGH') : response.data) : [];
+
+    const handleRetry = () => {
+        setError(null);
+        handleOpenModal();
+    };
+
     return (
         <>
-            <Container maxWidth={false} sx={{ width: '95%', py: 4 }}>
-                {/* Control Bar: Check Status Button + View Toggle */}
-                <Box sx={{ display: 'flex', gap: 2, mb: 4, alignItems: 'center', justifyContent: 'space-between' }}>
-                    <CheckStatusButton onClick={handleOpenModal} loading={loading} />
-                    {response && <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />}
-                </Box>
+            <Container maxWidth="lg" sx={{ py: 4, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                {/* Control Bar */}
+                {response && !error && (
+                    <Box sx={{
+                        display: 'flex',
+                        gap: 2,
+                        mb: 4,
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        borderBottom: '1px solid #e0e0e0',
+                        pb: 2
+                    }}>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={showOnlyHighRisk}
+                                    onChange={(e) => setShowOnlyHighRisk(e.target.checked)}
+                                    color="warning"
+                                />
+                            }
+                            label="Show High Risk Only"
+                        />
+                        <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />
+                    </Box>
+                )}
 
                 {/* Credentials Modal */}
-                <CredentialsModal 
+                <CredentialsModal
                     open={openModal}
                     credentials={credentials}
                     error={error}
@@ -108,25 +136,24 @@ export default function HomePage() {
                     loading={loading}
                 />
 
-                {/* Error Alert (only show if not in modal) */}
-                {error && !openModal && <ErrorAlert error={error} />}
+                {/* Main Content */}
+                <Box sx={{ flex: 1, overflowY: 'auto', p: 1 }}>
+                    {error && !loading ? (
+                        <ErrorView error={error} onRetry={handleRetry} />
+                    ) : response ? (
+                        <>
+                            {/* Card View */}
+                            {viewMode === 'card' && <CardView data={filteredData} />}
 
-                {/* Scan Results */}
-                {response && (
-                    <Box sx={{ mt: 4 }}>
-                        <Typography variant="h5" sx={{ mb: 3, fontWeight: 700 }}>
-                            Scan Results
-                        </Typography>
-
-                        {/* Card View */}
-                        {viewMode === 'card' && <CardView data={response.data} />}
-
-                        {/* Table View */}
-                        {viewMode === 'table' && <TableView data={response.data} />}
-                    </Box>
-                )}
+                            {/* Table View */}
+                            {viewMode === 'table' && <TableView data={filteredData} />}
+                        </>
+                    ) : (
+                        <InitialView onCheckStatus={handleOpenModal} loading={loading} />
+                    )}
+                </Box>
             </Container>
-            {footerStats && <Footer footerStats={footerStats} />}
+            {summaryStats && <Summary summaryStats={summaryStats} />}
         </>
     );
 }

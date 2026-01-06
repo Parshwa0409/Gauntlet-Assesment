@@ -20,9 +20,7 @@ class S3PolicyAndComplianceChecker(PolicyAndComplianceChecker):
         risk_level = "LOW"
 
         if self.is_public or not self.is_encrypted or not self.is_versioning_enabled or not self.is_logging_enabled:
-            risk = "High"
-        else:
-            risk = "Low"
+            risk_level = "HIGH"
 
         if self.is_public or not self.is_encrypted or not self.is_versioning_enabled or not self.is_logging_enabled:
             compliance_status = "FAIL"

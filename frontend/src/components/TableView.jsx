@@ -6,6 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function TableView({ data }) {
   // Helper function to determine text color based on risk/compliance status
@@ -47,34 +48,40 @@ export default function TableView({ data }) {
         <TableBody>
           {data && Array.isArray(data) && data.length > 0 ? (
             data.map((item, index) => (
-              <TableRow 
-                key={index} 
-                sx={{ 
-                  '&:hover': { 
-                    backgroundColor: 'rgba(102, 126, 234, 0.05)',
-                  }, 
-                  transition: 'all 0.3s ease',
-                  borderBottom: '1px solid rgba(102, 126, 234, 0.2)',
-                  '& .MuiTableCell-body': { padding: '16px' }
-                }}
+              <Tooltip
+                key={index}
+                title={<pre>{JSON.stringify(item.metadata, null, 2)}</pre>}
+                placement="top"
+                arrow
               >
-                {Object.entries(item).map(([key, value]) => {
-                  const statusColor = getStatusColor(key, value);
-                  const cellContent = typeof value === 'object' ? JSON.stringify(value) : String(value);
-                  
-                  return (
-                    <TableCell 
-                      key={key} 
-                      sx={{ 
-                        color: statusColor,
-                        fontWeight: statusColor !== '#333' ? 600 : 500,
-                      }}
-                    >
-                      {cellContent}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
+                <TableRow
+                  sx={{
+                    '&:hover': {
+                      backgroundColor: 'rgba(102, 126, 234, 0.05)',
+                    },
+                    transition: 'all 0.3s ease',
+                    borderBottom: '1px solid rgba(102, 126, 234, 0.2)',
+                    '& .MuiTableCell-body': { padding: '16px' }
+                  }}
+                >
+                  {Object.entries(item).map(([key, value]) => {
+                    const statusColor = getStatusColor(key, value);
+                    const cellContent = typeof value === 'object' ? JSON.stringify(value) : String(value);
+
+                    return (
+                      <TableCell
+                        key={key}
+                        sx={{
+                          color: statusColor,
+                          fontWeight: statusColor !== '#333' ? 600 : 500,
+                        }}
+                      >
+                        {cellContent}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              </Tooltip>
             ))
           ) : (
             <TableRow>

@@ -18,5 +18,5 @@ class EC2PolicyAndComplianceChecker(PolicyAndComplianceChecker):
         if self.is_running and self.is_public:
             return {"risk_level": "HIGH", "compliance_status": "FAIL"}
         else:
-            return {"risk_level": "LOW", "compliance_status": "FAIL"}
+            return {"risk_level": "LOW", "compliance_status": "PASS"}
 
