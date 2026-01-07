@@ -69,7 +69,6 @@ The frontend will open automatically in your browser at `http://localhost:3000`.
 2.  Click the button to open the credentials modal.
 3.  Enter a valid **AWS Access Key ID**, **AWS Secret Access Key**, and **AWS Region** (e.g., `us-east-1`). The credentials should have at least read-only permissions for EC2 and S3.
 4.  Click "Submit". The application will perform the scan and display the security posture dashboard.
-4.  Click "Submit". The application will perform the scan and display the security posture dashboard.
 
 ## Deployment
 
