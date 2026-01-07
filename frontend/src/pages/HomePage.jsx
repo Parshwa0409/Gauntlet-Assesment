@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Summary from '../components/Summary';
 import CredentialsModal from '../components/CredentialsModal';
 import ViewToggle from '../components/ViewToggle';
 import ErrorView from '../components/ErrorView';
+import Button from '@mui/material/Button';
 import CardView from '../components/CardView';
 import TableView from '../components/TableView';
 import { FormControlLabel, Switch } from '@mui/material';
@@ -97,6 +97,13 @@ export default function HomePage() {
         handleOpenModal();
     };
 
+    const handleNewScan = () => {
+        setResponse(null);
+        setSummaryStats(null);
+        setError(null);
+        setShowOnlyHighRisk(false);
+    };
+
     return (
         <>
             <Container maxWidth="lg" sx={{ py: 4, flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -124,6 +131,9 @@ export default function HomePage() {
                                 label="Show High Risk Only"
                             />
                             <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />
+                            <Button variant="outlined" onClick={handleNewScan}>
+                                New Scan
+                            </Button>
                         </Box>
                     </Box>
                 )}
