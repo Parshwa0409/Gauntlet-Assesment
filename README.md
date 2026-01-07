@@ -46,8 +46,6 @@ uvicorn main:app --reload
 ```
 The backend API will now be running at `http://localhost:8000`.
 
-*Note: You may need to create a `requirements.txt` file if one does not exist. Based on the project, it should contain `fastapi`, `uvicorn`, `boto3`, and `python-dotenv`.*
-
 ### 2. Frontend Setup
 
 In a **new terminal window**, set up and run the React frontend.
@@ -71,3 +69,8 @@ The frontend will open automatically in your browser at `http://localhost:3000`.
 2.  Click the button to open the credentials modal.
 3.  Enter a valid **AWS Access Key ID**, **AWS Secret Access Key**, and **AWS Region** (e.g., `us-east-1`). The credentials should have at least read-only permissions for EC2 and S3.
 4.  Click "Submit". The application will perform the scan and display the security posture dashboard.
+4.  Click "Submit". The application will perform the scan and display the security posture dashboard.
+
+## Deployment
+
+For a detailed guide on deploying this application to a production environment on AWS, including service selection and architecture, please see the [Deployment Strategy Explanation](architecture.md).
