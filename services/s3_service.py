@@ -16,8 +16,12 @@ def fetch_s3_buckets(session):
         try:
             s3.get_bucket_encryption(Bucket=name)
             encryption = True
-        except Exception:
-            encryption = False
+        except ClientError as e:
+            if e.response['Error']['Code'] == 'ServerSideEncryptionConfigurationNotFoundError':
+                encryption = False
+            else:
+                # Re-raise the exception if it's a different error
+                raise
 
         # Versioning
         versioning_resp = s3.get_bucket_versioning(Bucket=name)
@@ -67,24 +71,5 @@ def fetch_s3_buckets(session):
             }
         }
         normalized.append(ResourceResponseSchema(**mapped_data))
-
-    normalized.append(
-        ResourceResponseSchema(
-            **{
-                "id": "cspm-secure-bucket-1",
-                "name": "cspm-secure-bucket-1",
-                "type": "S3",
-                "status": "ACTIVE",
-                "risk_level": "LOW",
-                "compliance_status": "PASS",
-                "metadata": {
-                    "encryption": True,
-                    "versioning": False,
-                    "logging": False,
-                    "public": False
-                }
-            }
-        )
-    )
 
     return normalized
