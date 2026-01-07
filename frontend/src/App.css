@@ -84,52 +84,6 @@ button:active {
   color: #c62828;
 }
 
-/* Summary bar styles */
-.summary-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 15px 20px;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.summary-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.summary-title {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.summary-stats {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.summary-stats span {
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-.summary-stats strong {
-    font-weight: 700;
-    margin-left: 6px;
-}
 
 /* Initial View Placeholder */
 .initial-view {

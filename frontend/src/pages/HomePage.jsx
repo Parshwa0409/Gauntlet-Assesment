@@ -67,7 +67,7 @@ export default function HomePage() {
 
             const data = await result.json();
             setResponse(data);
-            
+
             // Extract summary stats from API response
             if (data.summary) {
                 setSummaryStats(data.summary);
@@ -107,21 +107,24 @@ export default function HomePage() {
                         gap: 2,
                         mb: 4,
                         alignItems: 'center',
-                        justifyContent: 'flex-end',
+                        justifyContent: 'space-between', // Changed
                         borderBottom: '1px solid #e0e0e0',
                         pb: 2
                     }}>
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={showOnlyHighRisk}
-                                    onChange={(e) => setShowOnlyHighRisk(e.target.checked)}
-                                    color="warning"
-                                />
-                            }
-                            label="Show High Risk Only"
-                        />
-                        <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />
+                        {summaryStats && <Summary summaryStats={summaryStats} />}
+                        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={showOnlyHighRisk}
+                                        onChange={(e) => setShowOnlyHighRisk(e.target.checked)}
+                                        color="warning"
+                                    />
+                                }
+                                label="Show High Risk Only"
+                            />
+                            <ViewToggle viewMode={viewMode} onViewModeChange={setViewMode} />
+                        </Box>
                     </Box>
                 )}
 
@@ -137,7 +140,7 @@ export default function HomePage() {
                 />
 
                 {/* Main Content */}
-                <Box sx={{ flex: 1, overflowY: 'auto', p: 1 }}>
+                <Box sx={{ flex: 1, overflowY: 'auto', p: 1, mt: 2 }}>
                     {error && !loading ? (
                         <ErrorView error={error} onRetry={handleRetry} />
                     ) : response ? (
@@ -153,7 +156,6 @@ export default function HomePage() {
                     )}
                 </Box>
             </Container>
-            {summaryStats && <Summary summaryStats={summaryStats} />}
         </>
     );
 }

@@ -1,27 +1,44 @@
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+const SummaryCard = ({ title, value, color }) => (
+    <Paper
+        elevation={3}
+        sx={{
+            p: 2,
+            textAlign: 'center',
+            color: '#fff',
+            background: `linear-gradient(135deg, ${color} 0%, ${color}cc 100%)`,
+        }}
+    >
+        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            {value}
+        </Typography>
+        <Typography variant="subtitle1">{title}</Typography>
+    </Paper>
+);
+
 const Summary = ({ summaryStats }) => {
     const defaultStats = {
         total_assets_scanned: 0,
         total_high_risk_assets: 0,
-        fail_compliance: 0,
-        total_ec2_instances: 0,
-        total_buckets: 0,
     };
 
     const stats = summaryStats || defaultStats;
 
     return (
-        <footer className="summary-bar">
-            <div className="summary-content">
-                <p className="summary-title">Summary</p>
-                <div className="summary-stats">
-                    <span>Total Assets: <strong>{stats.total_assets_scanned}</strong></span>
-                    <span>High Risk: <strong>{stats.total_high_risk_assets}</strong></span>
-                    <span>Failing Compliance: <strong>{stats.fail_compliance}</strong></span>
-                    <span>EC2 Instances: <strong>{stats.total_ec2_instances}</strong></span>
-                    <span>S3 Buckets: <strong>{stats.total_buckets}</strong></span>
-                </div>
-            </div>
-        </footer>
+        <Box sx={{ mb: 4 }}>
+            <Grid container spacing={4}>
+                <Grid item xs={12} sm={6}>
+                    <SummaryCard title="Total Assets Scanned" value={stats.total_assets_scanned} color="#667eea" />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <SummaryCard title="Total 'High Risk' Assets" value={stats.total_high_risk_assets} color="#ef5350" />
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 
